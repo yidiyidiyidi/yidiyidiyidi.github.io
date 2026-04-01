@@ -3,156 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Index</title>
+    <title>yidiyidiyidi</title>
     <style>
-        /* CSS VARIABLES FOR EASY UPDATES */
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --accent-color: #0000ff; /* Classic blue link */
-            --sidebar-width: 300px;
-            --border-style: 1px solid #000;
-        }
-
-        * { box-sizing: border-box; }
-
+       
         body {
-            margin: 0;
-            padding: 0;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex; /* Creates the side-by-side look */
+    background-color: #fff;
+    color: #000;
+    /* This will use the best monospaced font available on the user's device */
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    margin: 0;
+    padding: 60px 20px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
         }
 
-        /* LEFT SIDEBAR (FIXED) */
-        aside {
-            width: var(--sidebar-width);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding: 30px;
-            border-right: var(--border-style);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .container {
+            max-width: 700px; 
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 60px;
+            text-align: left;
         }
 
         h1 {
             font-size: 1.2rem;
-            letter-spacing: 2px;
-            margin: 0 0 20px 0;
+            font-weight: normal;
+            margin: 0 0 10px 0;
+            text-transform: none; /* Respects your lowercase typing */
+            letter-spacing: 0px;
+        }
+
+        .contact-info {
+            margin-top: -10px; 
+            margin-bottom: 25px; 
+            font-size: 0.85rem; 
+            line-height: 1.6;
+        }
+
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
         }
 
         nav a {
+            color: #000;
             text-decoration: none;
-            color: var(--text-color);
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
-        /* RIGHT CONTENT AREA (SCROLLING) */
-        main {
-            margin-left: var(--sidebar-width);
-            width: calc(100% - var(--sidebar-width));
-            padding: 30px;
-        }
-
         .project {
-            margin-bottom: 100px;
-            max-width: 1000px;
+            margin-bottom: 80px;
         }
 
         .project-info {
             display: flex;
             justify-content: space-between;
-            border-bottom: var(--border-style);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
             font-size: 0.8rem;
-            text-transform: uppercase;
+            margin-bottom: 12px;
+            /* Borders deleted as requested */
         }
 
-        .media-container {
-            width: 100%;
-        }
-
-        img, video {
-            width: 100%;
+        img {
+            max-width: 100%;
             height: auto;
             display: block;
             margin-bottom: 15px;
         }
 
-        .video-embed {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
-            height: 0;
-            margin-bottom: 15px;
+        .media-container p {
+            font-size: 0.8rem;
+            margin-top: 10px;
         }
 
-        .video-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* MOBILE RESPONSIVENESS */
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            aside {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: var(--border-style);
-            }
-            main {
-                width: 100%;
-                margin-left: 0;
-            }
+        a {
+            color: #000;
         }
     </style>
 </head>
 <body>
 
-    <aside>
-<header>
-    <h1>yidiyidiyidi</h1>
-    
-    <div style="margin-top: -10px; margin-bottom: 25px; font-size: 0.85rem; line-height: 1.6;">
-        <a href="mailto:yidi.zheng@duke.edu">yidi.zheng@duke.edu</a><br>
-        <a href="https://instagram.com/yidiyidiyidi" target="_blank">@yidiyidiyidi</a>
-    </div>
+<div class="container">
+    <header>
+        <h1>yidiyidiyidi</h1>
+        
+        <div class="contact-info">
+            <a href="mailto:yidi.zheng@duke.edu">yidi.zheng@duke.edu</a><br>
+            <a href="https://instagram.com/yidiyidiyidi" target="_blank">@yidiyidiyidi</a>
+        </div>
 
-    <nav>
-        <ul>
-            <li><a href="#mix">byyb.radio mix</a></li>
-            <li><a href="#article">capturing the face</a></li>
-        </ul>
-    </nav>
-</header>
-    </aside>
+        <nav>
+            <ul>
+                <li><a href="#mix">byyb.radio mix</a></li>
+                <li><a href="#article">capturing the face</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        
         <section class="project" id="mix">
             <div class="project-info">
                 <span>byyb.radio</span>
@@ -175,17 +136,18 @@
                 <img src="face-vision.png" alt="Afro-Inclusive Machine Visions">
                 
                 <p style="font-size: 0.8rem; margin-top: 10px;">
-                    Published in <i>Critical Asian Studies</i> commentary board, as part of the <i>Special Series: New Directions in Africa-China Studies</i>. This article inivites a critique of the techno-optimistim surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
+                    Published in <i>Critical Asian Studies</i> commentary board, as part of the <i>Special Series: New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
+                </p>
 
-                <p style="margin-top: 10px;">
+                <p style="font-size: 0.8rem; margin-top: 10px;">
                     <a href="https://criticalasianstudies.org/commentary/2026/1/22/special-series-new-directions-in-africa-china-studies-yidi-zhengnbspcapturing-the-face-afro-inclusive-machine-visions-from-south-china" target="_blank">
                         → Read Full Article
                     </a>
                 </p>
             </div>
         </section>
-
     </main>
+</div>
 
 </body>
 </html>
