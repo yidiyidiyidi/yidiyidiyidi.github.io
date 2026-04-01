@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Index</title>
+    <style>
+        /* CSS VARIABLES FOR EASY UPDATES */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #0000ff; /* Classic blue link */
+            --sidebar-width: 300px;
+            --border-style: 1px solid #000;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex; /* Creates the side-by-side look */
+        }
+
+        /* LEFT SIDEBAR (FIXED) */
+        aside {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 30px;
+            border-right: var(--border-style);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 0 20px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* RIGHT CONTENT AREA (SCROLLING) */
+        main {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 30px;
+        }
+
+        .project {
+            margin-bottom: 100px;
+            max-width: 1000px;
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: var(--border-style);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .media-container {
+            width: 100%;
+        }
+
+        img, video {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            margin-bottom: 15px;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: var(--border-style);
+            }
+            main {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div>
+            <h1>yidiyidiyidi</h1>
+            <nav>
+                <ul>
+                    <li><a href="#article">Article: Afro-Inclusive Machine Visions</a></li>
+                    <li><a href="#mix">Mix: BYYB Radio (Mar 14)</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="footer-info">
+            <p style="font-size: 0.7rem;">© 2024<br>Contact: email@address.com</p>
+        </div>
+    </aside>
+
+    <main>
+        
+        <section class="project" id="mix">
+            <div class="project-info">
+                <span>yidiyidiyidi @ byyb.radio</span>
+                <span>Mar.14 2026</span>
+            </div>
+            <div class="media-container">
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2294544656&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <p style="font-size: 0.8rem; margin-top: 10px;">
+                    Radio mix for BYYB Radio. <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="project" id="project2">
+            <div class="project-info">
+                <span>Series Title</span>
+                <span>2023</span>
+            </div>
+            <div class="media-container">
+                <img src="https://via.placeholder.com/1200x800" alt="Work">
+                <img src="https://via.placeholder.com/1200x800" alt="Work">
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
