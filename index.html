@@ -60,10 +60,22 @@
             font-weight: bold;
         }
 
-        /* Rule for the Chinese text in your new project */
         .zh-text {
             font-family: "SimSun", "STSong", serif;
             font-weight: normal;
+        }
+
+        /* Horizontal Image Grid */
+        .image-grid {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .image-grid img {
+            width: 33.33%; /* Splits the space into three */
+            height: auto;
+            margin-bottom: 0;
         }
 
         img {
@@ -139,6 +151,23 @@
                 <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
                 <p>
                     The map series traces the disconnect between official narratives and the realities of telecommunications infrastructure—between the techno-utopian vision of the Dynamic Zero-COVID regime and the territorial errors embedded in its crude algorithm.
+                </p>
+            </div>
+        </section>
+
+        <section class="project" id="posters">
+            <div class="project-info">
+                <span>[Poster Series] Duke Graduate Students Union Events</span>
+                <span>2024-2025</span>
+            </div>
+            <div class="media-container">
+                <div class="image-grid">
+                    <img src="union-poster-1.png" alt="DGSU Poster 1">
+                    <img src="union-poster-2.png" alt="DGSU Poster 2">
+                    <img src="union-poster-3.png" alt="DGSU Poster 3">
+                </div>
+                <p>
+                    For my beloved <a href="https://www.dukegradunion.org/" target="_blank" style="color: #000; text-decoration: underline;">DGSU</a>.
                 </p>
             </div>
         </section>
