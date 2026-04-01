@@ -22,14 +22,14 @@
         }
 
         header {
-            margin-bottom: 60px;
+            margin-bottom: 50px; /* Adjusted since nav is gone */
             text-align: left;
         }
 
         h1 {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #66D9EF; /* Code Blue */
+            color: #66D9EF; 
             margin: 0 0 10px 0;
             text-transform: none; 
             letter-spacing: 0px;
@@ -37,7 +37,7 @@
 
         .contact-info {
             margin-top: -10px; 
-            margin-bottom: 25px; 
+            margin-bottom: 0px; /* Reduced to keep it tight */
             font-size: 0.85rem; 
             line-height: 1.6;
         }
@@ -45,23 +45,6 @@
         .contact-info a {
             color: #000;
             text-decoration: none;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-            font-size: 0.85rem;
-        }
-
-        nav a {
-            color: #000;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
         }
 
         .project {
@@ -73,7 +56,7 @@
             justify-content: space-between;
             font-size: 0.8rem;
             margin-bottom: 12px;
-            color: #F92672; /* Code Pink */
+            color: #F92672; 
             font-weight: bold;
         }
 
@@ -104,19 +87,12 @@
             <a href="mailto:yidi.zheng@duke.edu">yidi.zheng@duke.edu</a><br>
             <a href="https://instagram.com/yidiyidiyidi" target="_blank">@yidiyidiyidi</a>
         </div>
-
-        <nav>
-            <ul>
-                <li><a href="#mix">byyb.radio mix</a></li>
-                <li><a href="#article">capturing the face</a></li>
-            </ul>
-        </nav>
-    </header>
+        </header>
 
     <main>
         <section class="project" id="mix">
             <div class="project-info">
-                <span>byyb.radio</span>
+                <span>[Mix] byyb.radio</span>
                 <span>Mar.14 2026</span>
             </div>
             <div class="media-container">
@@ -128,24 +104,21 @@
         </section>
 
         <section class="project" id="article">
-            <div class="project-info">
-                <span>Capturing the Face: Afro-Inclusive Machine Visions</span>
-                <span>Jan. 22 2026</span>
-            </div>
-            <div class="media-container">
-                <img src="face-vision.png" alt="Afro-Inclusive Machine Visions">
-                
-                <p>
-                    Published in <i>Critical Asian Studies</i> commentary board, as part of the <i>Special Series: New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
-                </p>
-
-                <p>
-                    <a href="https://criticalasianstudies.org/commentary/2026/1/22/special-series-new-directions-in-africa-china-studies-yidi-zhengnbspcapturing-the-face-afro-inclusive-machine-visions-from-south-china" target="_blank">
-                        → Read Full Article
-                    </a>
-                </p>
-            </div>
-        </section>
+    <div class="project-info">
+        <span>Capturing the Face: Afro-Inclusive Machine Visions</span>
+        <span>Jan. 22 2026</span>
+    </div>
+    <div class="media-container">
+        <p>
+            Published in <i>Critical Asian Studies</i> commentary board, as part of the <i>Special Series: New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
+        </p>
+        <p>
+            <a href="https://criticalasianstudies.org/commentary/2026/1/22/special-series-new-directions-in-africa-china-studies-yidi-zhengnbspcapturing-the-face-afro-inclusive-machine-visions-from-south-china" target="_blank">
+                → Read Full Article
+            </a>
+        </p>
+    </div>
+</section>
     </main>
 </div>
 
