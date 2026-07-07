@@ -72,11 +72,6 @@
             margin-top: 2px;
         }
 
-        .zh-text {
-            font-family: "SimSun", "STSong", serif;
-            font-weight: bold;
-        }
-
         img {
             max-width: 100%;
             height: auto;
@@ -140,15 +135,15 @@
             visibility: hidden;
         }
 
-        /* RIGHT SIDE METADATA ARCHITECTURE (TRACKLIST, DESCRIPTIONS, IMAGES) */
-        .tracklist-wrapper, .article-description-wrapper, .cartography-wrapper {
+        /* RIGHT SIDE METADATA ARCHITECTURE (TRACKLIST, DESCRIPTIONS) */
+        .tracklist-wrapper, .article-description-wrapper {
             font-size: 0.75rem;
             max-width: 340px;
             width: 100%;
             text-align: right;
         }
 
-        .article-description-wrapper p, .cartography-wrapper p {
+        .article-description-wrapper p {
             font-size: 0.75rem;
             margin: 0 0 10px 0;
             color: #555;
@@ -255,7 +250,7 @@
                 align-items: flex-start;
                 gap: 15px;
             }
-            .article-description-wrapper, .cartography-wrapper {
+            .article-description-wrapper {
                 max-width: 100%;
             }
             .post-audio-link, .right-action-link {
@@ -276,6 +271,7 @@
     </header>
 
     <main>
+        <!-- PROJECT 1: MOTH RADIO -->
         <section class="project" id="moth-mix">
             <div class="project-info">
                 <span class="project-title">[Mix] Global Bass, Baile Funk, Grime with Möth Radio</span>
@@ -284,13 +280,16 @@
             
             <div class="audio-section">
                 <div class="media-container left-content">
+                    <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="moth-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
                     </button>
 
+                    <!-- Hidden SoundCloud iframe -->
                     <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
                 </div>
 
+                <!-- Right-Aligned Tracklist Module -->
                 <div class="tracklist-wrapper">
                     <div class="tracklist-header">TRACKLIST</div>
                     <ul class="tracklist" id="moth-tracklist">
@@ -327,6 +326,7 @@
             </div>
         </section>
 
+        <!-- PROJECT 2: BYYB RADIO -->
         <section class="project" id="mix">
             <div class="project-info">
                 <span class="project-title">[Mix] Latin Club, Electro, Ghetto House with byyb.radio</span>
@@ -335,13 +335,16 @@
             
             <div class="audio-section">
                 <div class="media-container left-content">
+                    <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="byyb-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
                     </button>
 
+                    <!-- Hidden SoundCloud iframe -->
                     <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
                 </div>
 
+                <!-- Right-Aligned Tracklist Module -->
                 <div class="tracklist-wrapper">
                     <div class="tracklist-header">TRACKLIST</div>
                     <ul class="tracklist" id="byyb-tracklist">
@@ -381,14 +384,17 @@
             </div>
         </section>
 
+        <!-- PROJECT 3: ARTICLE -->
         <section class="project" id="article">
             <div class="project-info">
                 <span class="project-title">[Article] Capturing the Face: Afro-Inclusive Machine Visions</span>
                 <span class="project-meta">Durham/Guangzhou, Jan 2026</span>
             </div>
             <div class="article-section">
+                <!-- Left side left intentionally blank/clean or for future icon/trigger -->
                 <div class="left-content"></div>
                 
+                <!-- Description aligned right -->
                 <div class="article-description-wrapper">
                     <p>
                         Published in <i>Critical Asian Studies</i> commentary board, as part of the special series <i>New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
@@ -401,27 +407,10 @@
                 </div>
             </div>
         </section>
-
-        <section class="project" id="cartography">
-            <div class="project-info">
-                <span class="project-title">[Digital Cartography] Territorial Errors of Spatiotemporal Overlap  <span class="zh-text">捉虫时空交集</span></span>
-                <span class="project-meta">Durham, May 2025</span>
-            </div>
-            <div class="article-section">
-                <div class="left-content">
-                    <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
-                </div>
-                
-                <div class="cartography-wrapper">
-                    <p>
-                        This map series traces the disconnect between official narratives and the realities of telecommunications infrastructure—between the techno-utopian vision of the Dynamic Zero-COVID regime and the territorial errors embedded in its crude algorithm.
-                    </p>
-                </div>
-            </div>
-        </section>
     </main>
 </div>
 
+<!-- SOUNDCLOUD WIDGET API -->
 <script src="https://w.soundcloud.com/player/api.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
