@@ -84,12 +84,6 @@
             margin-bottom: 15px;
         }
 
-        .media-container p {
-            font-size: 0.8rem;
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
         a {
             color: #000;
         }
@@ -146,15 +140,15 @@
             visibility: hidden;
         }
 
-        /* RIGHT SIDE METADATA ARCHITECTURE (TRACKLIST & DESCRIPTION) */
-        .tracklist-wrapper, .article-description-wrapper {
+        /* RIGHT SIDE METADATA ARCHITECTURE (TRACKLIST, DESCRIPTIONS, IMAGES) */
+        .tracklist-wrapper, .article-description-wrapper, .cartography-wrapper {
             font-size: 0.75rem;
             max-width: 340px;
             width: 100%;
             text-align: right;
         }
 
-        .article-description-wrapper p {
+        .article-description-wrapper p, .cartography-wrapper p {
             font-size: 0.75rem;
             margin: 0 0 10px 0;
             color: #555;
@@ -208,7 +202,7 @@
             display: block;
             margin-top: 10px;
             font-size: 0.75rem;
-            font-weight: bold; /* Bold action links */
+            font-weight: bold;
             text-align: right;
         }
         .post-audio-link a, .right-action-link a {
@@ -228,16 +222,18 @@
                 margin-bottom: 60px;
             }
             .audio-section, .article-section {
-                flex-direction: column;
+                flex-direction: column-reverse; /* Pushes the right-side metadata content above media if wrapping */
                 align-items: flex-start;
                 gap: 15px;
             }
-            .tracklist-wrapper, .article-description-wrapper, .left-content {
-                text-align: left;
+            .tracklist-wrapper, .article-description-wrapper, .cartography-wrapper {
+                max-width: 100%;
+                /* Kept right-aligned as requested */
+            }
+            .left-content {
                 max-width: 100%;
             }
             .post-audio-link, .right-action-link {
-                text-align: left;
                 margin-top: 5px;
             }
         }
@@ -263,7 +259,7 @@
             </div>
             
             <div class="audio-section">
-                <div class="media-container">
+                <div class="media-container left-content">
                     <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="moth-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
@@ -318,7 +314,7 @@
             </div>
             
             <div class="audio-section">
-                <div class="media-container">
+                <div class="media-container left-content">
                     <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="byyb-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
@@ -378,7 +374,7 @@
                 <!-- Left side left intentionally blank/clean or for future icon/trigger -->
                 <div class="left-content"></div>
                 
-                <!-- Description moved to the right side to structurally match tracklists -->
+                <!-- Description aligned right -->
                 <div class="article-description-wrapper">
                     <p>
                         Published in <i>Critical Asian Studies</i> commentary board, as part of the special series <i>New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
@@ -398,11 +394,18 @@
                 <span class="project-title">[Digital Cartography] Territorial Errors of Spatiotemporal Overlap  <span class="zh-text">捉虫时空交集</span></span>
                 <span class="project-meta">Durham, May 2025</span>
             </div>
-            <div class="media-container">
-                <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
-                <p>
-                    This map series traces the disconnect between official narratives and the realities of telecommunications infrastructure—between the techno-utopian vision of the Dynamic Zero-COVID regime and the territorial errors embedded in its crude algorithm.
-                </p>
+            <div class="article-section">
+                <!-- Image content matches left-aligned media space -->
+                <div class="left-content">
+                    <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
+                </div>
+                
+                <!-- Description shifted right to cleanly mirror tracklist styling -->
+                <div class="cartography-wrapper">
+                    <p>
+                        This map series traces the disconnect between official narratives and the realities of telecommunications infrastructure—between the techno-utopian vision of the Dynamic Zero-COVID regime and the territorial errors embedded in its crude algorithm.
+                    </p>
+                </div>
             </div>
         </section>
     </main>
