@@ -16,7 +16,6 @@
             justify-content: center;
         }
 
-        /* RESPONSIVE CONTAINER: 100% on mobile, max 700px on desktop */
         .container {
             max-width: 700px; 
             width: 100%;
@@ -53,7 +52,6 @@
             margin-bottom: 60px;
         }
 
-        /* FLEX CONTAINER FOR HEADERS */
         .project-info {
             display: flex;
             justify-content: space-between;
@@ -99,9 +97,10 @@
             color: #000;
         }
 
-        /* CUSTOM NATIVE AUDIO CONTROLS */
+        /* CUSTOM NATIVE AUDIO CONTROLS WITH GRAPHIC ICONS */
         .audio-control-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: none;
             border: none;
             color: #66D9EF; /* Code Blue */
@@ -113,6 +112,14 @@
             margin-bottom: 5px;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Add explicit spacing between the geometric status icon and button label text */
+        .audio-control-btn span.icon {
+            display: inline-block;
+            width: 14px;
+            margin-right: 6px;
+            font-size: 0.75rem;
         }
         
         .audio-control-btn:hover {
@@ -187,13 +194,13 @@
         /* MOBILE OPTIMIZATIONS */
         @media (max-width: 600px) {
             body {
-                padding: 40px 15px; /* Slightly tighter edge spacing for recordings */
+                padding: 40px 15px;
             }
             header {
                 margin-bottom: 60px;
             }
             .project-info {
-                flex-direction: column; /* Stack tag and date vertically if the screen is tiny */
+                flex-direction: column;
                 gap: 2px;
             }
         }
@@ -219,8 +226,10 @@
                 <span>May 2026</span>
             </div>
             <div class="media-container">
-                <!-- Native Button Trigger -->
-                <button class="audio-control-btn" id="moth-toggle">[ PLAY MIX ]</button>
+                <!-- Native Button Trigger with Inline Icon Container -->
+                <button class="audio-control-btn" id="moth-toggle">
+                    <span class="icon">▶</span> <span class="text">PLAY MIX</span>
+                </button>
 
                 <!-- Hidden SoundCloud iframe -->
                 <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
@@ -270,8 +279,10 @@
                     <span>Mar 2026</span>
                 </div>
                 <div class="media-container">
-                    <!-- Native Button Trigger -->
-                    <button class="audio-control-btn" id="byyb-toggle">[ PLAY MIX ]</button>
+                    <!-- Native Button Trigger with Inline Icon Container -->
+                    <button class="audio-control-btn" id="byyb-toggle">
+                        <span class="icon">▶</span> <span class="text">PLAY MIX</span>
+                    </button>
 
                     <!-- Hidden SoundCloud iframe -->
                     <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
@@ -342,6 +353,8 @@
         var mothIframe = document.getElementById('moth-player');
         var mothWidget = SC.Widget(mothIframe);
         var mothToggle = document.getElementById('moth-toggle');
+        var mothIcon = mothToggle.querySelector('.icon');
+        var mothText = mothToggle.querySelector('.text');
         var mothTrackItems = document.querySelectorAll('#moth-tracklist .track-item');
 
         mothToggle.addEventListener('click', function() {
@@ -349,11 +362,13 @@
         });
 
         mothWidget.bind(SC.Widget.Events.PLAY, function() {
-            mothToggle.innerText = "[ PAUSE MIX ]";
+            mothIcon.innerText = "■";
+            mothText.innerText = "PAUSE MIX";
         });
 
         mothWidget.bind(SC.Widget.Events.PAUSE, function() {
-            mothToggle.innerText = "[ PLAY MIX ]";
+            mothIcon.innerText = "▶";
+            mothText.innerText = "PLAY MIX";
         });
 
         mothWidget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
@@ -382,17 +397,21 @@
         var byybIframe = document.getElementById('byyb-player');
         var byybWidget = SC.Widget(byybIframe);
         var byybToggle = document.getElementById('byyb-toggle');
+        var byybIcon = byybToggle.querySelector('.icon');
+        var byybText = byybToggle.querySelector('.text');
 
         byybToggle.addEventListener('click', function() {
             byybWidget.toggle();
         });
 
         byybWidget.bind(SC.Widget.Events.PLAY, function() {
-            byybToggle.innerText = "[ PAUSE MIX ]";
+            byybIcon.innerText = "■";
+            byybText.innerText = "PAUSE MIX";
         });
 
         byybWidget.bind(SC.Widget.Events.PAUSE, function() {
-            byybToggle.innerText = "[ PLAY MIX ]";
+            byybIcon.innerText = "▶";
+            byybText.innerText = "PLAY MIX";
         });
     });
 </script>
