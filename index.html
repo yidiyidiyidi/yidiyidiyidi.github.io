@@ -16,13 +16,15 @@
             justify-content: center;
         }
 
+        /* RESPONSIVE CONTAINER: 100% on mobile, max 700px on desktop */
         .container {
             max-width: 700px; 
-            width: 80%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         header {
-            margin-bottom: 100px;
+            margin-bottom: 80px;
             text-align: left;
         }
 
@@ -51,13 +53,16 @@
             margin-bottom: 60px;
         }
 
+        /* FLEX CONTAINER FOR HEADERS */
         .project-info {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
             font-size: 0.8rem;
             margin-bottom: 12px;
             color: #F92672; /* Code Pink */
             font-weight: bold;
+            gap: 15px;
         }
 
         .zh-text {
@@ -177,6 +182,20 @@
         }
         .track-item.active .track-artist {
             opacity: 1;
+        }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 600px) {
+            body {
+                padding: 40px 15px; /* Slightly tighter edge spacing for recordings */
+            }
+            header {
+                margin-bottom: 60px;
+            }
+            .project-info {
+                flex-direction: column; /* Stack tag and date vertically if the screen is tiny */
+                gap: 2px;
+            }
         }
     </style>
 </head>
