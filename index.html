@@ -1,89 +1,3 @@
-```python
-import pandas as pd
-xls = pd.ExcelFile("moth0523.xlsx")
-print(xls.sheet_names)
-df = pd.read_excel("moth0523.xlsx")
-print(df.head(20))
-print(df.columns)
-
-
-```
-
-```text
-['moth0523']
-     #                         Track Title                     Artist Timestamp
-0    1                        BANGA NZAMBE         Alec Lomami & Lacy  00:00:00
-1    2                                 Yup                      Burna  00:01:13
-2    3                          Beat Bunny                Povoa Madge  00:03:09
-3    4           Crawl Out (Shai FM Remix)               Ovid shai fm  00:04:13
-4    5                           Right Now                DANN, Lamsi  00:05:39
-5    6                     Step in the Mud                 Noodles142  00:08:18
-6    7                            Cotopaxi                   Entrañas  00:11:05
-7    8                             Cloud 9                    M i M i  00:13:40
-8    9            Falaise (Cimarrón Remix)                      SHALT  00:15:13
-9   10   No Escape (Boiled Trousers Remix)  DARK BUDA Boiled Trousers  00:17:29
-10  11                       Incertidumbre                  Entrañas  00:18:23
-11  12                            Wonteeda             Le Motel Bryte  00:19:59
-12  13  Full Metal Eagle (Pura Pura Remix)                    La Dame  00:23:16
-13  14                        Bad From Day            Magugu Le Motel  00:25:27
-14  15                             Garnets                       Ovid  00:28:04
-15  16               SEX! (Entrañas Remix)                 Hedo Hydr8  00:29:50
-16  17                  It's Just Business                    Morelia  00:31:40
-17  18                     Not Even Scared                  Dusty Dan  00:34:00
-18  19                         Robot Razor                      Burna  00:35:10
-19  20                         Taribo West       Bamao Yende Low Jack  00:36:40
-Index(['#', 'Track Title', 'Artist', 'Timestamp'], dtype='object')
-
-
-```
-
-```python
-print(df.to_string())
-
-
-```
-
-```text
-     #                         Track Title                     Artist Timestamp
-0    1                        BANGA NZAMBE         Alec Lomami & Lacy  00:00:00
-1    2                                 Yup                      Burna  00:01:13
-2    3                          Beat Bunny                Povoa Madge  00:03:09
-3    4           Crawl Out (Shai FM Remix)               Ovid shai fm  00:04:13
-4    5                           Right Now                DANN, Lamsi  00:05:39
-5    6                     Step in the Mud                 Noodles142  00:08:18
-6    7                            Cotopaxi                   Entrañas  00:11:05
-7    8                             Cloud 9                    M i M i  00:13:40
-8    9            Falaise (Cimarrón Remix)                      SHALT  00:15:13
-9   10   No Escape (Boiled Trousers Remix)  DARK BUDA Boiled Trousers  00:17:29
-10  11                       Incertidumbre                  Entrañas  00:18:23
-11  12                            Wonteeda             Le Motel Bryte  00:19:59
-12  13  Full Metal Eagle (Pura Pura Remix)                    La Dame  00:23:16
-13  14                        Bad From Day            Magugu Le Motel  00:25:27
-14  15                             Garnets                       Ovid  00:28:04
-15  16               SEX! (Entrañas Remix)                 Hedo Hydr8  00:29:50
-16  17                  It's Just Business                    Morelia  00:31:40
-17  18                     Not Even Scared                  Dusty Dan  00:34:00
-18  19                         Robot Razor                      Burna  00:35:10
-19  20                         Taribo West       Bamao Yende Low Jack  00:36:40
-20  21                           Spindrift                      Aloka  00:38:40
-21  22                 Sirens (K-65 Remix)      Bereza FFS Collective  00:40:00
-22  23           Ritmo Actual (T.NO remix)                  Toma Kami  00:42:00
-23  24                         BLAAS FLUIT                Ziggy Twiss  00:45:00
-
-
-```
-
-To get the tracks highlighting in real time as the mix plays, we need to do three things to your code:
-
-1. **Add the SoundCloud Widget API script** right before the closing `</body>` tag so JavaScript can talk to the player.
-2. **Build an interactive tracklist** under the Möth Radio mix where each track has its timestamp stored in seconds as a `data-time` attribute.
-3. **Include a short script** that listens to the audio playhead. When the player passes a timestamp, it strips the color from the old track and highlights the current one.
-
-To keep with your clean, code-minimalist aesthetic, the tracklist is designed as a small, scannable terminal-like list right beneath the player. The highlighted track will stand out in your **Code Blue** (`#66D9EF`), which creates a beautiful contrast against the pink section headers.
-
-### The Complete Updated Code
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,34 +93,63 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
             color: #000;
         }
 
-        /* TRACKLIST GRAPHICS */
-        .tracklist-container {
-            margin-top: 15px;
+        /* NTS-STYLE FOLDABLE TRACKLIST */
+        .tracklist-wrapper {
+            margin-top: 20px;
             font-size: 0.75rem;
             border-top: 1px dashed #ccc;
             padding-top: 15px;
         }
-        .tracklist-title {
+
+        /* Tweak the collapsible summary title */
+        summary {
             font-weight: bold;
-            margin-bottom: 8px;
             color: #555;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+            margin-bottom: 10px;
         }
+        
+        summary::-webkit-details-marker {
+            color: #F92672; /* Pink marker to match theme */
+        }
+
         .tracklist {
             list-style: none;
             padding: 0;
-            margin: 0;
-            max-height: 200px;
+            margin: 10px 0 0 0;
+            max-height: 250px;
             overflow-y: auto;
         }
+
+        /* NTS Columns style */
         .track-item {
-            padding: 2px 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
             color: #888;
+            border-bottom: 1px solid #f2f2f2;
             transition: color 0.2s ease, font-weight 0.2s ease;
         }
-        /* Active track styling - matches Code Blue */
+
+        .track-title {
+            text-align: left;
+            padding-right: 10px;
+        }
+
+        .track-artist {
+            text-align: right;
+            opacity: 0.8;
+        }
+
+        /* Active highlight track matching Code Blue */
         .track-item.active {
             color: #66D9EF;
             font-weight: bold;
+        }
+        .track-item.active .track-artist {
+            opacity: 1;
         }
     </style>
 </head>
@@ -230,7 +173,6 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
                 <span>May 2026</span>
             </div>
             <div class="media-container">
-                <!-- Added id="moth-player" here -->
                 <iframe id="moth-player" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
                 <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
                     <a href="https://soundcloud.com/moth-radio" title="MÖTH RADIO" target="_blank" style="color: #cccccc; text-decoration: none;">MÖTH RADIO</a> · <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" title="Global Bass, Baile Funk &amp; Grime with yidiyidiyidi @MÖTHRADIO 2026-05-23 | Hong Kong" target="_blank" style="color: #cccccc; text-decoration: none;">Global Bass, Baile Funk &amp; Grime with yidiyidiyidi @MÖTHRADIO 2026-05-23 | Hong Kong</a>
@@ -239,35 +181,37 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
                     DJ mix for Möth Radio. <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
                 </p>
 
-                <!-- DYNAMIC TRACKLIST -->
-                <div class="tracklist-container">
-                    <div class="tracklist-title">TRACKLIST // PLAYING NOW</div>
-                    <ul class="tracklist" id="moth-tracklist">
-                        <li class="track-item" data-time="0">00:00 - Alec Lomami & Lacy - BANGA NZAMBE</li>
-                        <li class="track-item" data-time="73">01:13 - Burna - Yup</li>
-                        <li class="track-item" data-time="189">03:09 - Povoa Madge - Beat Bunny</li>
-                        <li class="track-item" data-time="253">04:13 - Ovid shai fm - Crawl Out (Shai FM Remix)</li>
-                        <li class="track-item" data-time="339">05:39 - DANN, Lamsi - Right Now</li>
-                        <li class="track-item" data-time="498">08:18 - Noodles142 - Step in the Mud</li>
-                        <li class="track-item" data-time="665">11:05 - Entrañas - Cotopaxi</li>
-                        <li class="track-item" data-time="820">13:40 - M i M i - Cloud 9</li>
-                        <li class="track-item" data-time="913">15:13 - SHALT - Falaise (Cimarrón Remix)</li>
-                        <li class="track-item" data-time="1049">17:29 - DARK BUDA Boiled Trousers - No Escape (Boiled Trousers Remix)</li>
-                        <li class="track-item" data-time="1103">18:23 - Entrañas - Incertidumbre</li>
-                        <li class="track-item" data-time="1199">19:59 - Le Motel Bryte - Wonteeda</li>
-                        <li class="track-item" data-time="1396">23:16 - La Dame - Full Metal Eagle (Pura Pura Remix)</li>
-                        <li class="track-item" data-time="1527">25:27 - Magugu Le Motel - Bad From Day</li>
-                        <li class="track-item" data-time="1684">28:04 - Ovid - Garnets</li>
-                        <li class="track-item" data-time="1790">29:50 - Hedo Hydr8 - SEX! (Entrañas Remix)</li>
-                        <li class="track-item" data-time="1900">31:40 - Morelia - It's Just Business</li>
-                        <li class="track-item" data-time="2040">34:00 - Dusty Dan - Not Even Scared</li>
-                        <li class="track-item" data-time="2110">35:10 - Burna - Robot Razor</li>
-                        <li class="track-item" data-time="2200">36:40 - Bamao Yende Low Jack - Taribo West</li>
-                        <li class="track-item" data-time="2320">38:40 - Aloka - Spindrift</li>
-                        <li class="track-item" data-time="2400">40:00 - Bereza FFS Collective - Sirens (K-65 Remix)</li>
-                        <li class="track-item" data-time="2520">42:00 - Toma Kami - Ritmo Actual (T.NO remix)</li>
-                        <li class="track-item" data-time="2700">45:00 - Ziggy Twiss - BLAAS FLUIT</li>
-                    </ul>
+                <!-- FOLDABLE NTS-STYLE TRACKLIST -->
+                <div class="tracklist-wrapper">
+                    <details>
+                        <summary>TRACKLIST [+/-]</summary>
+                        <ul class="tracklist" id="moth-tracklist">
+                            <li class="track-item" data-time="0"><span class="track-title">BANGA NZAMBE</span><span class="track-artist">Alec Lomami & Lacy</span></li>
+                            <li class="track-item" data-time="73"><span class="track-title">Yup</span><span class="track-artist">Burna</span></li>
+                            <li class="track-item" data-time="189"><span class="track-title">Beat Bunny</span><span class="track-artist">Povoa Madge</span></li>
+                            <li class="track-item" data-time="253"><span class="track-title">Crawl Out (Shai FM Remix)</span><span class="track-artist">Ovid shai fm</span></li>
+                            <li class="track-item" data-time="339"><span class="track-title">Right Now</span><span class="track-artist">DANN, Lamsi</span></li>
+                            <li class="track-item" data-time="498"><span class="track-title">Step in the Mud</span><span class="track-artist">Noodles142</span></li>
+                            <li class="track-item" data-time="665"><span class="track-title">Cotopaxi</span><span class="track-artist">Entrañas</span></li>
+                            <li class="track-item" data-time="820"><span class="track-title">Cloud 9</span><span class="track-artist">M i M i</span></li>
+                            <li class="track-item" data-time="913"><span class="track-title">Falaise (Cimarrón Remix)</span><span class="track-artist">SHALT</span></li>
+                            <li class="track-item" data-time="1049"><span class="track-title">No Escape (Boiled Trousers Remix)</span><span class="track-artist">DARK BUDA Boiled Trousers</span></li>
+                            <li class="track-item" data-time="1103"><span class="track-title">Incertidumbre</span><span class="track-artist">Entrañas</span></li>
+                            <li class="track-item" data-time="1199"><span class="track-title">Wonteeda</span><span class="track-artist">Le Motel Bryte</span></li>
+                            <li class="track-item" data-time="1396"><span class="track-title">Full Metal Eagle (Pura Pura Remix)</span><span class="track-artist">La Dame</span></li>
+                            <li class="track-item" data-time="1527"><span class="track-title">Bad From Day</span><span class="track-artist">Magugu Le Motel</span></li>
+                            <li class="track-item" data-time="1684"><span class="track-title">Garnets</span><span class="track-artist">Ovid</span></li>
+                            <li class="track-item" data-time="1790"><span class="track-title">SEX! (Entrañas Remix)</span><span class="track-artist">Hedo Hydr8</span></li>
+                            <li class="track-item" data-time="1900"><span class="track-title">It's Just Business</span><span class="track-artist">Morelia</span></li>
+                            <li class="track-item" data-time="2040"><span class="track-title">Not Even Scared</span><span class="track-artist">Dusty Dan</span></li>
+                            <li class="track-item" data-time="2110"><span class="track-title">Robot Razor</span><span class="track-artist">Burna</span></li>
+                            <li class="track-item" data-time="2200"><span class="track-title">Taribo West</span><span class="track-artist">Bamao Yende Low Jack</span></li>
+                            <li class="track-item" data-time="2320"><span class="track-title">Spindrift</span><span class="track-artist">Aloka</span></li>
+                            <li class="track-item" data-time="2400"><span class="track-title">Sirens (K-65 Remix)</span><span class="track-artist">Bereza FFS Collective</span></li>
+                            <li class="track-item" data-time="2520"><span class="track-title">Ritmo Actual (T.NO remix)</span><span class="track-artist">Toma Kami</span></li>
+                            <li class="track-item" data-time="2700"><span class="track-title">BLAAS FLUIT</span><span class="track-artist">Ziggy Twiss</span></li>
+                        </ul>
+                    </details>
                 </div>
             </section>
 
@@ -349,11 +293,9 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
         var trackItems = document.querySelectorAll('#moth-tracklist .track-item');
 
         widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
-            // SoundCloud returns current position in milliseconds, convert to seconds
             var currentSeconds = data.currentPosition / 1000;
             var activeIndex = -1;
 
-            // Determine which track is currently playing
             for (var i = 0; i < trackItems.length; i++) {
                 var trackTime = parseInt(trackItems[i].getAttribute('data-time'), 10);
                 if (currentSeconds >= trackTime) {
@@ -363,7 +305,6 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
                 }
             }
 
-            // Update UI class tokens
             trackItems.forEach(function(item, index) {
                 if (index === activeIndex) {
                     item.classList.add('active');
@@ -377,5 +318,3 @@ To keep with your clean, code-minimalist aesthetic, the tracklist is designed as
 
 </body>
 </html>
-
-```
