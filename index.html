@@ -205,7 +205,11 @@
             font-weight: bold;
             text-align: right;
         }
-        .post-audio-link a, .right-action-link a {
+        .post-audio-link a {
+            color: #888;
+            text-decoration: underline; /* Added underline here */
+        }
+        .right-action-link a {
             color: #888;
             text-decoration: none;
         }
@@ -221,14 +225,18 @@
             header {
                 margin-bottom: 60px;
             }
-            .audio-section, .article-section {
-                flex-direction: column-reverse; /* Pushes the right-side metadata content above media if wrapping */
+            .audio-section {
+                flex-direction: column; /* Kept button placement rule */
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .article-section {
+                flex-direction: column-reverse;
                 align-items: flex-start;
                 gap: 15px;
             }
             .tracklist-wrapper, .article-description-wrapper, .cartography-wrapper {
                 max-width: 100%;
-                /* Kept right-aligned as requested */
             }
             .left-content {
                 max-width: 100%;
@@ -300,7 +308,7 @@
                     </ul>
                     
                     <div class="post-audio-link">
-                        <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
+                        <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud</a>
                     </div>
                 </div>
             </div>
@@ -358,7 +366,7 @@
                     </ul>
                     
                     <div class="post-audio-link">
-                        <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
+                        <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud</a>
                     </div>
                 </div>
             </div>
