@@ -93,6 +93,12 @@
             margin-bottom: 15px;
         }
 
+        /* Spacing adjustment for text elements sitting below tracklists */
+        .media-container .post-tracklist-text {
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
         a {
             color: #000;
         }
@@ -114,7 +120,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Add explicit spacing between the geometric status icon and button label text */
         .audio-control-btn span.icon {
             display: inline-block;
             width: 14px;
@@ -226,17 +231,13 @@
                 <span>May 2026</span>
             </div>
             <div class="media-container">
-                <!-- Native Button Trigger with Inline Icon Container -->
+                <!-- Native Button Trigger -->
                 <button class="audio-control-btn" id="moth-toggle">
                     <span class="icon">▶</span> <span class="text">PLAY MIX</span>
                 </button>
 
                 <!-- Hidden SoundCloud iframe -->
                 <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-                
-                <p>
-                    DJ mix for Möth Radio. <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
-                </p>
 
                 <!-- FOLDABLE NTS-STYLE TRACKLIST -->
                 <div class="tracklist-wrapper">
@@ -270,28 +271,34 @@
                         </ul>
                     </details>
                 </div>
-            </section>
 
-            <!-- PROJECT 2: BYYB RADIO -->
-            <section class="project" id="mix">
-                <div class="project-info">
-                    <span>[Latin Club, Electro, Ghetto House Mix] byyb.radio</span>
-                    <span>Mar 2026</span>
-                </div>
-                <div class="media-container">
-                    <!-- Native Button Trigger with Inline Icon Container -->
-                    <button class="audio-control-btn" id="byyb-toggle">
-                        <span class="icon">▶</span> <span class="text">PLAY MIX</span>
-                    </button>
+                <!-- Promotional external link repositioned here below the tracklist module -->
+                <p class="post-tracklist-text">
+                    DJ mix for Möth Radio. <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
+                </p>
+            </div>
+        </section>
 
-                    <!-- Hidden SoundCloud iframe -->
-                    <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+        <!-- PROJECT 2: BYYB RADIO -->
+        <section class="project" id="mix">
+            <div class="project-info">
+                <span>[Latin Club, Electro, Ghetto House Mix] byyb.radio</span>
+                <span>Mar 2026</span>
+            </div>
+            <div class="media-container">
+                <!-- Native Button Trigger -->
+                <button class="audio-control-btn" id="byyb-toggle">
+                    <span class="icon">▶</span> <span class="text">PLAY MIX</span>
+                </button>
 
-                    <p>
-                        DJ mix for byyb.radio. <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
-                    </p>
-                </div>
-            </section>
+                <!-- Hidden SoundCloud iframe -->
+                <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+
+                <p>
+                    DJ mix for byyb.radio. <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
+                </p>
+            </div>
+        </section>
 
         <!-- PROJECT 3: ARTICLE -->
         <section class="project" id="article">
