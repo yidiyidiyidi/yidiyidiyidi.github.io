@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" style="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yidiyidiyidi</title>
     <style>
         body {
@@ -86,11 +86,41 @@
 
         .media-container p {
             font-size: 0.8rem;
-            margin-top: 15px;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         a {
             color: #000;
+        }
+
+        /* CUSTOM NATIVE AUDIO CONTROLS */
+        .audio-control-btn {
+            display: inline-block;
+            background: none;
+            border: none;
+            color: #66D9EF; /* Code Blue */
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 0;
+            margin-bottom: 5px;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .audio-control-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* HIDE SOUNDCLOUD VISUALLY BUT KEEP FOR API TRACKING */
+        .sc-hidden-player {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 0;
+            visibility: hidden;
         }
 
         /* NTS-STYLE FOLDABLE TRACKLIST */
@@ -170,15 +200,17 @@
                 <span>May 2026</span>
             </div>
             <div class="media-container">
-                <iframe id="moth-player" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                    <a href="https://soundcloud.com/moth-radio" title="MÖTH RADIO" target="_blank" style="color: #cccccc; text-decoration: none;">MÖTH RADIO</a> · <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" title="Global Bass, Baile Funk &amp; Grime with yidiyidiyidi @MÖTHRADIO 2026-05-23 | Hong Kong" target="_blank" style="color: #cccccc; text-decoration: none;">Global Bass, Baile Funk &amp; Grime with yidiyidiyidi @MÖTHRADIO 2026-05-23 | Hong Kong</a>
-                </div>
+                <!-- Native Button Trigger -->
+                <button class="audio-control-btn" id="moth-toggle">[ PLAY MIX ]</button>
+
+                <!-- Hidden SoundCloud iframe -->
+                <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                
                 <p>
                     DJ mix for Möth Radio. <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
                 </p>
 
-                <!-- FOLDABLE NTS-STYLE TRACKLIST (UPDATED) -->
+                <!-- FOLDABLE NTS-STYLE TRACKLIST -->
                 <div class="tracklist-wrapper">
                     <details>
                         <summary>TRACKLIST [+/-]</summary>
@@ -219,10 +251,12 @@
                     <span>Mar 2026</span>
                 </div>
                 <div class="media-container">
-                    <iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                    <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                        <a href="https://soundcloud.com/byyb_radio" title="byyb.radio" target="_blank" style="color: #cccccc; text-decoration: none;">byyb.radio</a> · <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" title="yidiyidiyidi @ byyb.radio | Mar.14 2026" target="_blank" style="color: #cccccc; text-decoration: none;">yidiyidiyidi @ byyb.radio | Mar.14 2026</a>
-                    </div>
+                    <!-- Native Button Trigger -->
+                    <button class="audio-control-btn" id="byyb-toggle">[ PLAY MIX ]</button>
+
+                    <!-- Hidden SoundCloud iframe -->
+                    <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+
                     <p>
                         DJ mix for byyb.radio. <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
                     </p>
@@ -285,16 +319,30 @@
 <script src="https://w.soundcloud.com/player/api.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var iframe = document.getElementById('moth-player');
-        var widget = SC.Widget(iframe);
-        var trackItems = document.querySelectorAll('#moth-tracklist .track-item');
+        // --- MOTH RADIO PLAYER ---
+        var mothIframe = document.getElementById('moth-player');
+        var mothWidget = SC.Widget(mothIframe);
+        var mothToggle = document.getElementById('moth-toggle');
+        var mothTrackItems = document.querySelectorAll('#moth-tracklist .track-item');
 
-        widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
+        mothToggle.addEventListener('click', function() {
+            mothWidget.toggle();
+        });
+
+        mothWidget.bind(SC.Widget.Events.PLAY, function() {
+            mothToggle.innerText = "[ PAUSE MIX ]";
+        });
+
+        mothWidget.bind(SC.Widget.Events.PAUSE, function() {
+            mothToggle.innerText = "[ PLAY MIX ]";
+        });
+
+        mothWidget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
             var currentSeconds = data.currentPosition / 1000;
             var activeIndex = -1;
 
-            for (var i = 0; i < trackItems.length; i++) {
-                var trackTime = parseInt(trackItems[i].getAttribute('data-time'), 10);
+            for (var i = 0; i < mothTrackItems.length; i++) {
+                var trackTime = parseInt(mothTrackItems[i].getAttribute('data-time'), 10);
                 if (currentSeconds >= trackTime) {
                     activeIndex = i;
                 } else {
@@ -302,13 +350,30 @@
                 }
             }
 
-            trackItems.forEach(function(item, index) {
+            mothTrackItems.forEach(function(item, index) {
                 if (index === activeIndex) {
                     item.classList.add('active');
                 } else {
                     item.classList.remove('active');
                 }
             });
+        });
+
+        // --- BYYB RADIO PLAYER ---
+        var byybIframe = document.getElementById('byyb-player');
+        var byybWidget = SC.Widget(byybIframe);
+        var byybToggle = document.getElementById('byyb-toggle');
+
+        byybToggle.addEventListener('click', function() {
+            byybWidget.toggle();
+        });
+
+        byybWidget.bind(SC.Widget.Events.PLAY, function() {
+            byybToggle.innerText = "[ PAUSE MIX ]";
+        });
+
+        byybWidget.bind(SC.Widget.Events.PAUSE, function() {
+            byybToggle.innerText = "[ PLAY MIX ]";
         });
     });
 </script>
