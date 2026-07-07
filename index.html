@@ -102,11 +102,25 @@
             margin-bottom: 15px;
         }
 
+        .media-container .post-audio-link {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
         a {
             color: #000;
         }
 
-        /* CUSTOM NATIVE AUDIO CONTROLS WITH GRAPHIC ICONS */
+        /* FLEX CONTAINER TO SPLIT CONTROLS LEFT & TRACKLIST RIGHT */
+        .audio-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        /* CUSTOM NATIVE AUDIO CONTROLS */
         .audio-control-btn {
             display: inline-flex;
             align-items: center;
@@ -121,6 +135,7 @@
             margin-bottom: 5px;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
         }
 
         .audio-control-btn span.icon {
@@ -143,30 +158,25 @@
             visibility: hidden;
         }
 
-        /* TRACKLIST CONFIGURATION WITHOUT THE SEPARATOR LINE */
+        /* RIGHT SIDE TRACKLIST ARCHITECTURE */
         .tracklist-wrapper {
-            margin-top: 10px;
             font-size: 0.75rem;
-            padding-top: 0;
+            max-width: 340px;
+            width: 100%;
+            text-align: right;
         }
 
-        summary {
+        .tracklist-header {
             font-weight: bold;
             color: #555;
-            cursor: pointer;
-            outline: none;
+            margin-bottom: 8px;
             user-select: none;
-            margin-bottom: 10px;
-        }
-        
-        summary::-webkit-details-marker {
-            color: #F92672;
         }
 
         .tracklist {
             list-style: none;
             padding: 0;
-            margin: 10px 0 0 0;
+            margin: 0;
             max-height: 250px;
             overflow-y: auto;
         }
@@ -178,11 +188,12 @@
             color: #888;
             border-bottom: 1px solid #f2f2f2;
             transition: color 0.2s ease, font-weight 0.2s ease;
+            gap: 15px;
         }
 
         .track-title {
             text-align: left;
-            padding-right: 10px;
+            padding-right: 5px;
         }
 
         .track-artist {
@@ -206,6 +217,15 @@
             header {
                 margin-bottom: 60px;
             }
+            .audio-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .tracklist-wrapper {
+                text-align: left;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -228,46 +248,52 @@
                 <span class="project-title">[Mix] Global Bass, Baile Funk, Grime with Möth Radio</span>
                 <span class="project-meta">Hong Kong, May 2026</span>
             </div>
-            <div class="media-container">
-                <!-- Native Button Trigger -->
-                <button class="audio-control-btn" id="moth-toggle">
-                    <span class="icon">▶</span> <span class="text">PLAY MIX</span>
-                </button>
+            
+            <div class="audio-section">
+                <div class="media-container">
+                    <!-- Native Button Trigger -->
+                    <button class="audio-control-btn" id="moth-toggle">
+                        <span class="icon">▶</span> <span class="text">PLAY MIX</span>
+                    </button>
 
-                <!-- Hidden SoundCloud iframe -->
-                <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                    <!-- Hidden SoundCloud iframe -->
+                    <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                    
+                    <!-- Clean, single out-link below control button -->
+                    <p class="post-audio-link">
+                        <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
+                    </p>
+                </div>
 
-                <!-- FOLDABLE NTS-STYLE TRACKLIST -->
+                <!-- Right-Aligned Tracklist Module -->
                 <div class="tracklist-wrapper">
-                    <details>
-                        <summary>TRACKLIST [+/-]</summary>
-                        <ul class="tracklist" id="moth-tracklist">
-                            <li class="track-item" data-time="0"><span class="track-title">BANGA NZAMBE (Lacy Remix)</span><span class="track-artist">Alec Lomami</span></li>
-                            <li class="track-item" data-time="73"><span class="track-title">Yup</span><span class="track-artist">Burna</span></li>
-                            <li class="track-item" data-time="189"><span class="track-title">Beat Bunny</span><span class="track-artist">Povoa & Madge</span></li>
-                            <li class="track-item" data-time="253"><span class="track-title">Crawl Out (Shai FM Remix)</span><span class="track-artist">Ovid</span></li>
-                            <li class="track-item" data-time="339"><span class="track-title">Right Now</span><span class="track-artist">DANN & Lamsi</span></li>
-                            <li class="track-item" data-time="498"><span class="track-title">Step in the Mud</span><span class="track-artist">Noodles142</span></li>
-                            <li class="track-item" data-time="665"><span class="track-title">Cotopaxi</span><span class="track-artist">Entrañas</span></li>
-                            <li class="track-item" data-time="820"><span class="track-title">Cloud 9</span><span class="track-artist">M i M i</span></li>
-                            <li class="track-item" data-time="913"><span class="track-title">Falaise (Cimarrón Remix)</span><span class="track-artist">SHALT</span></li>
-                            <li class="track-item" data-time="1049"><span class="track-title">No Escape (Boiled Trousers Remix)</span><span class="track-artist">DARK BUDA</span></li>
-                            <li class="track-item" data-time="1103"><span class="track-title">Incertidumbre</span><span class="track-artist">Entrañas</span></li>
-                            <li class="track-item" data-time="1199"><span class="track-title">Wonteeda</span><span class="track-artist">Le Motel & Bryte</span></li>
-                            <li class="track-item" data-time="1396"><span class="track-title">Full Metal Eagle (Pura Pura Remix)</span><span class="track-artist">La Dame</span></li>
-                            <li class="track-item" data-time="1527"><span class="track-title">Bad From Day</span><span class="track-artist">Magugu & Le Motel</span></li>
-                            <li class="track-item" data-time="1684"><span class="track-title">Garnets</span><span class="track-artist">Ovid</span></li>
-                            <li class="track-item" data-time="1790"><span class="track-title">SEX! (Entrañas Remix)</span><span class="track-artist">Hedo Hydr8</span></li>
-                            <li class="track-item" data-time="1900"><span class="track-title">It's Just Business</span><span class="track-artist">Morelia</span></li>
-                            <li class="track-item" data-time="2040"><span class="track-title">Not Even Scared</span><span class="track-artist">Dusty Dan</span></li>
-                            <li class="track-item" data-time="2110"><span class="track-title">Robot Razor</span><span class="track-artist">Burna</span></li>
-                            <li class="track-item" data-time="2200"><span class="track-title">Taribo West</span><span class="track-artist">Bamao Yende & Low Jack</span></li>
-                            <li class="track-item" data-time="2320"><span class="track-title">Spindrift</span><span class="track-artist">Aloka</span></li>
-                            <li class="track-item" data-time="2400"><span class="track-title">Sirens (K-65 Remix)</span><span class="track-artist">Bereza</span></li>
-                            <li class="track-item" data-time="2520"><span class="track-title">Ritmo Actual (T.NO remix)</span><span class="track-artist">Toma Kami</span></li>
-                            <li class="track-item" data-time="2700"><span class="track-title">BLAAS FLUIT</span><span class="track-artist">Ziggy Twiss</span></li>
-                        </ul>
-                    </details>
+                    <div class="tracklist-header">TRACKLIST</div>
+                    <ul class="tracklist" id="moth-tracklist">
+                        <li class="track-item" data-time="0"><span class="track-title">BANGA NZAMBE (Lacy Remix)</span><span class="track-artist">Alec Lomami</span></li>
+                        <li class="track-item" data-time="73"><span class="track-title">Yup</span><span class="track-artist">Burna</span></li>
+                        <li class="track-item" data-time="189"><span class="track-title">Beat Bunny</span><span class="track-artist">Povoa & Madge</span></li>
+                        <li class="track-item" data-time="253"><span class="track-title">Crawl Out (Shai FM Remix)</span><span class="track-artist">Ovid</span></li>
+                        <li class="track-item" data-time="339"><span class="track-title">Right Now</span><span class="track-artist">DANN & Lamsi</span></li>
+                        <li class="track-item" data-time="498"><span class="track-title">Step in the Mud</span><span class="track-artist">Noodles142</span></li>
+                        <li class="track-item" data-time="665"><span class="track-title">Cotopaxi</span><span class="track-artist">Entrañas</span></li>
+                        <li class="track-item" data-time="820"><span class="track-title">Cloud 9</span><span class="track-artist">M i M i</span></li>
+                        <li class="track-item" data-time="913"><span class="track-title">Falaise (Cimarrón Remix)</span><span class="track-artist">SHALT</span></li>
+                        <li class="track-item" data-time="1049"><span class="track-title">No Escape (Boiled Trousers Remix)</span><span class="track-artist">DARK BUDA</span></li>
+                        <li class="track-item" data-time="1103"><span class="track-title">Incertidumbre</span><span class="track-artist">Entrañas</span></li>
+                        <li class="track-item" data-time="1199"><span class="track-title">Wonteeda</span><span class="track-artist">Le Motel & Bryte</span></li>
+                        <li class="track-item" data-time="1396"><span class="track-title">Full Metal Eagle (Pura Pura Remix)</span><span class="track-artist">La Dame</span></li>
+                        <li class="track-item" data-time="1527"><span class="track-title">Bad From Day</span><span class="track-artist">Magugu & Le Motel</span></li>
+                        <li class="track-item" data-time="1684"><span class="track-title">Garnets</span><span class="track-artist">Ovid</span></li>
+                        <li class="track-item" data-time="1790"><span class="track-title">SEX! (Entrañas Remix)</span><span class="track-artist">Hedo Hydr8</span></li>
+                        <li class="track-item" data-time="1900"><span class="track-title">It's Just Business</span><span class="track-artist">Morelia</span></li>
+                        <li class="track-item" data-time="2040"><span class="track-title">Not Even Scared</span><span class="track-artist">Dusty Dan</span></li>
+                        <li class="track-item" data-time="2110"><span class="track-title">Robot Razor</span><span class="track-artist">Burna</span></li>
+                        <li class="track-item" data-time="2200"><span class="track-title">Taribo West</span><span class="track-artist">Bamao Yende & Low Jack</span></li>
+                        <li class="track-item" data-time="2320"><span class="track-title">Spindrift</span><span class="track-artist">Aloka</span></li>
+                        <li class="track-item" data-time="2400"><span class="track-title">Sirens (K-65 Remix)</span><span class="track-artist">Bereza</span></li>
+                        <li class="track-item" data-time="2520"><span class="track-title">Ritmo Actual (T.NO remix)</span><span class="track-artist">Toma Kami</span></li>
+                        <li class="track-item" data-time="2700"><span class="track-title">BLAAS FLUIT</span><span class="track-artist">Ziggy Twiss</span></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -286,6 +312,11 @@
 
                 <!-- Hidden SoundCloud iframe -->
                 <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                
+                <!-- Out-link restored below control button -->
+                <p class="post-audio-link">
+                    <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud →</a>
+                </p>
             </div>
         </section>
 
