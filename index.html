@@ -207,7 +207,7 @@
         }
         .post-audio-link a {
             color: #888;
-            text-decoration: underline; /* Added underline here */
+            text-decoration: underline;
         }
         .right-action-link a {
             color: #888;
@@ -226,20 +226,30 @@
                 margin-bottom: 60px;
             }
             .audio-section {
-                flex-direction: column; /* Kept button placement rule */
-                align-items: flex-start;
-                gap: 15px;
+                flex-direction: row; /* Keeps them on the same line level */
+                flex-wrap: wrap;     /* Allows content below to wrap gracefully if necessary */
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 10px;
             }
             .article-section {
                 flex-direction: column-reverse;
                 align-items: flex-start;
                 gap: 15px;
             }
-            .tracklist-wrapper, .article-description-wrapper, .cartography-wrapper {
+            .tracklist-wrapper {
+                max-width: 100%;
+            }
+            .article-description-wrapper, .cartography-wrapper {
                 max-width: 100%;
             }
             .left-content {
-                max-width: 100%;
+                max-width: auto;
+                width: auto; /* Shrinks the left block wrapper so it fits perfectly inline */
+            }
+            .audio-control-btn {
+                padding: 0;
+                margin: 0; /* Tighten up padding/margins to match header height */
             }
             .post-audio-link, .right-action-link {
                 margin-top: 5px;
@@ -259,7 +269,6 @@
     </header>
 
     <main>
-        <!-- PROJECT 1: MOTH RADIO -->
         <section class="project" id="moth-mix">
             <div class="project-info">
                 <span class="project-title">[Mix] Global Bass, Baile Funk, Grime with Möth Radio</span>
@@ -268,16 +277,13 @@
             
             <div class="audio-section">
                 <div class="media-container left-content">
-                    <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="moth-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
                     </button>
 
-                    <!-- Hidden SoundCloud iframe -->
                     <iframe class="sc-hidden-player" id="moth-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
                 </div>
 
-                <!-- Right-Aligned Tracklist Module -->
                 <div class="tracklist-wrapper">
                     <div class="tracklist-header">TRACKLIST</div>
                     <ul class="tracklist" id="moth-tracklist">
@@ -314,7 +320,6 @@
             </div>
         </section>
 
-        <!-- PROJECT 2: BYYB RADIO -->
         <section class="project" id="mix">
             <div class="project-info">
                 <span class="project-title">[Mix] Latin Club, Electro, Ghetto House with byyb.radio</span>
@@ -323,16 +328,13 @@
             
             <div class="audio-section">
                 <div class="media-container left-content">
-                    <!-- Native Button Trigger -->
                     <button class="audio-control-btn" id="byyb-toggle">
                         <span class="icon">▶</span> <span class="text">PLAY MIX</span>
                     </button>
 
-                    <!-- Hidden SoundCloud iframe -->
                     <iframe class="sc-hidden-player" id="byyb-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2294544656&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
                 </div>
 
-                <!-- Right-Aligned Tracklist Module -->
                 <div class="tracklist-wrapper">
                     <div class="tracklist-header">TRACKLIST</div>
                     <ul class="tracklist" id="byyb-tracklist">
@@ -344,151 +346,4 @@
                         <li class="track-item"><span class="track-title">Wave Speech</span><span class="track-artist">KayTV</span></li>
                         <li class="track-item"><span class="track-title">Time Night</span><span class="track-artist">Antilogic</span></li>
                         <li class="track-item"><span class="track-title">Channel Code</span><span class="track-artist">Rizio</span></li>
-                        <li class="track-item"><span class="track-title">Mirthayu</span><span class="track-artist">Sepbtt</span></li>
-                        <li class="track-item"><span class="track-title">Basha</span><span class="track-artist">Hassan Abou Alam feat. ZIAD ZAZA & Ismail Nosrat & Aly B</span></li>
-                        <li class="track-item"><span class="track-title">Sneak Dissin'</span><span class="track-artist">False Persona</span></li>
-                        <li class="track-item"><span class="track-title">Hyperobject</span><span class="track-artist">Rizio</span></li>
-                        <li class="track-item"><span class="track-title">Tunnel Vision</span><span class="track-artist">DJ GIRL</span></li>
-                        <li class="track-item"><span class="track-title">Pontinha</span><span class="track-artist">Entrañas kontronatura</span></li>
-                        <li class="track-item"><span class="track-title">TRACATRA</span><span class="track-artist">Sepbtt</span></li>
-                        <li class="track-item"><span class="track-title">Two For Two</span><span class="track-artist">Hyroglifics Deft</span></li>
-                        <li class="track-item"><span class="track-title">TRACATRA</span><span class="track-artist">Sepbtt</span></li>
-                        <li class="track-item"><span class="track-title">Merak Part I</span><span class="track-artist">Leese</span></li>
-                        <li class="track-item"><span class="track-title">ΞΞ</span><span class="track-artist">Leese x Ancestral Vision</span></li>
-                        <li class="track-item"><span class="track-title">Four4 Diva Loop</span><span class="track-artist">Jensen Interceptor</span></li>
-                        <li class="track-item"><span class="track-title">Jukedub</span><span class="track-artist">NOGE Damna</span></li>
-                        <li class="track-item"><span class="track-title">BITCH MODE</span><span class="track-artist">HLRTY</span></li>
-                        <li class="track-item"><span class="track-title">EAT THIS P*SSY</span><span class="track-artist">Yucky</span></li>
-                        <li class="track-item"><span class="track-title">Gimme Gimme</span><span class="track-artist">Shirley Temper</span></li>
-                        <li class="track-item"><span class="track-title">Shake</span><span class="track-artist">Amy Kisnorbo Sam Binga</span></li>
-                        <li class="track-item"><span class="track-title">Don't Stop</span><span class="track-artist">COIDO</span></li>
-                        <li class="track-item"><span class="track-title">Three O'Clock</span><span class="track-artist">DJ Hesss Young Lychee</span></li>
-                    </ul>
-                    
-                    <div class="post-audio-link">
-                        <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT 3: ARTICLE -->
-        <section class="project" id="article">
-            <div class="project-info">
-                <span class="project-title">[Article] Capturing the Face: Afro-Inclusive Machine Visions</span>
-                <span class="project-meta">Durham/Guangzhou, Jan 2026</span>
-            </div>
-            <div class="article-section">
-                <!-- Left side left intentionally blank/clean or for future icon/trigger -->
-                <div class="left-content"></div>
-                
-                <!-- Description aligned right -->
-                <div class="article-description-wrapper">
-                    <p>
-                        Published in <i>Critical Asian Studies</i> commentary board, as part of the special series <i>New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
-                    </p>
-                    <div class="right-action-link">
-                        <a href="https://criticalasianstudies.org/commentary/2026/1/22/special-series-new-directions-in-africa-china-studies-yidi-zhengnbspcapturing-the-face-afro-inclusive-machine-visions-from-south-china" target="_blank">
-                            Read Full Article →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT 4: DIGITAL CARTOGRAPHY -->
-        <section class="project" id="cartography">
-            <div class="project-info">
-                <span class="project-title">[Digital Cartography] Territorial Errors of Spatiotemporal Overlap  <span class="zh-text">捉虫时空交集</span></span>
-                <span class="project-meta">Durham, May 2025</span>
-            </div>
-            <div class="article-section">
-                <!-- Image content matches left-aligned media space -->
-                <div class="left-content">
-                    <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
-                </div>
-                
-                <!-- Description shifted right to cleanly mirror tracklist styling -->
-                <div class="cartography-wrapper">
-                    <p>
-                        This map series traces the disconnect between official narratives and the realities of telecommunications infrastructure—between the techno-utopian vision of the Dynamic Zero-COVID regime and the territorial errors embedded in its crude algorithm.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-</div>
-
-<!-- SOUNDCLOUD WIDGET API -->
-<script src="https://w.soundcloud.com/player/api.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- MOTH RADIO PLAYER ---
-        var mothIframe = document.getElementById('moth-player');
-        var mothWidget = SC.Widget(mothIframe);
-        var mothToggle = document.getElementById('moth-toggle');
-        var mothIcon = mothToggle.querySelector('.icon');
-        var mothText = mothToggle.querySelector('.text');
-        var mothTrackItems = document.querySelectorAll('#moth-tracklist .track-item');
-
-        mothToggle.addEventListener('click', function() {
-            mothWidget.toggle();
-        });
-
-        mothWidget.bind(SC.Widget.Events.PLAY, function() {
-            mothIcon.innerText = "■";
-            mothText.innerText = "PAUSE MIX";
-        });
-
-        mothWidget.bind(SC.Widget.Events.PAUSE, function() {
-            mothIcon.innerText = "▶";
-            mothText.innerText = "PLAY MIX";
-        });
-
-        mothWidget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
-            var currentSeconds = data.currentPosition / 1000;
-            var activeIndex = -1;
-
-            for (var i = 0; i < mothTrackItems.length; i++) {
-                var trackTime = parseInt(mothTrackItems[i].getAttribute('data-time'), 10);
-                if (currentSeconds >= trackTime) {
-                    activeIndex = i;
-                } else {
-                    break;
-                }
-            }
-
-            mothTrackItems.forEach(function(item, index) {
-                if (index === activeIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        });
-
-        // --- BYYB RADIO PLAYER ---
-        var byybIframe = document.getElementById('byyb-player');
-        var byybWidget = SC.Widget(byybIframe);
-        var byybToggle = document.getElementById('byyb-toggle');
-        var byybIcon = byybToggle.querySelector('.icon');
-        var byybText = byybToggle.querySelector('.text');
-
-        byybToggle.addEventListener('click', function() {
-            byybWidget.toggle();
-        });
-
-        byybWidget.bind(SC.Widget.Events.PLAY, function() {
-            byybIcon.innerText = "■";
-            byybText.innerText = "PAUSE MIX";
-        });
-
-        byybWidget.bind(SC.Widget.Events.PAUSE, function() {
-            byybIcon.innerText = "▶";
-            byybText.innerText = "PLAY MIX";
-        });
-    });
-</script>
-
-</body>
-</html>
+                        <li class="track-item"><span class="track-title">Mirthayu</span><span class
