@@ -54,13 +54,23 @@
 
         .project-info {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: flex-start;
-            font-size: 0.8rem;
             margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 0.8rem;
             color: #F92672; /* Code Pink */
             font-weight: bold;
-            gap: 15px;
+        }
+
+        /* Project metadata (Location, Date) matching the tracklist styling */
+        .project-meta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #555;
+            margin-top: 2px;
         }
 
         .zh-text {
@@ -93,7 +103,6 @@
             margin-bottom: 15px;
         }
 
-        /* Spacing adjustment for text elements sitting below tracklists */
         .media-container .post-tracklist-text {
             margin-top: 15px;
             margin-bottom: 0;
@@ -140,12 +149,11 @@
             visibility: hidden;
         }
 
-        /* NTS-STYLE FOLDABLE TRACKLIST */
+        /* TRACKLIST CONFIGURATION WITHOUT THE SEPARATOR LINE */
         .tracklist-wrapper {
-            margin-top: 20px;
+            margin-top: 10px;
             font-size: 0.75rem;
-            border-top: 1px dashed #ccc;
-            padding-top: 15px;
+            padding-top: 0;
         }
 
         summary {
@@ -204,10 +212,6 @@
             header {
                 margin-bottom: 60px;
             }
-            .project-info {
-                flex-direction: column;
-                gap: 2px;
-            }
         }
     </style>
 </head>
@@ -227,8 +231,8 @@
         <!-- PROJECT 1: MOTH RADIO -->
         <section class="project" id="moth-mix">
             <div class="project-info">
-                <span>[Global Bass, Baile Funk, Grime Mix] Möth Radio</span>
-                <span>May 2026</span>
+                <span class="project-title">[Global Bass, Baile Funk, Grime Mix] Möth Radio</span>
+                <span class="project-meta">Hong Kong, May 2026</span>
             </div>
             <div class="media-container">
                 <!-- Native Button Trigger -->
@@ -272,7 +276,6 @@
                     </details>
                 </div>
 
-                <!-- Promotional external link repositioned here below the tracklist module -->
                 <p class="post-tracklist-text">
                     DJ mix for Möth Radio. <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud →</a>
                 </p>
@@ -282,8 +285,8 @@
         <!-- PROJECT 2: BYYB RADIO -->
         <section class="project" id="mix">
             <div class="project-info">
-                <span>[Latin Club, Electro, Ghetto House Mix] byyb.radio</span>
-                <span>Mar 2026</span>
+                <span class="project-title">[Latin Club, Electro, Ghetto House Mix] byyb.radio</span>
+                <span class="project-meta">Shanghai, Mar 2026</span>
             </div>
             <div class="media-container">
                 <!-- Native Button Trigger -->
@@ -303,8 +306,8 @@
         <!-- PROJECT 3: ARTICLE -->
         <section class="project" id="article">
             <div class="project-info">
-                <span>[Article] Capturing the Face: Afro-Inclusive Machine Visions</span>
-                <span>Jan 2026</span>
+                <span class="project-title">[Article] Capturing the Face: Afro-Inclusive Machine Visions</span>
+                <span class="project-meta">Durham/Guangzhou, Jan 2026</span>
             </div>
             <div class="media-container">
                 <p>
@@ -321,8 +324,8 @@
         <!-- PROJECT 4: DIGITAL CARTOGRAPHY -->
         <section class="project" id="cartography">
             <div class="project-info">
-                <span>[Digital Cartography] Territorial Errors of Spatiotemporal Overlap  <span class="zh-text">捉虫时空交集</span></span>
-                <span>May 2025</span>
+                <span class="project-title">[Digital Cartography] Territorial Errors of Spatiotemporal Overlap  <span class="zh-text">捉虫时空交集</span></span>
+                <span class="project-meta">Durham, May 2025</span>
             </div>
             <div class="media-container">
                 <img src="digital-cartography.png" alt="Territorial Errors of Spatiotemporal Overlap">
@@ -335,8 +338,8 @@
         <!-- PROJECT 5: POSTERS -->
         <section class="project" id="posters">
             <div class="project-info">
-                <span>[Poster Series] Duke Graduate Students Union Events</span>
-                <span>2025-2026</span>
+                <span class="project-title">[Poster Series] Duke Graduate Students Union Events</span>
+                <span class="project-meta">Durham, 2025-2026</span>
             </div>
             <div class="media-container">
                 <div class="image-grid">
