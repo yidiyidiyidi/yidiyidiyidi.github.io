@@ -146,12 +146,18 @@
             visibility: hidden;
         }
 
-        /* RIGHT SIDE METADATA ARCHITECTURE */
-        .tracklist-wrapper, .article-link-wrapper {
+        /* RIGHT SIDE METADATA ARCHITECTURE (TRACKLIST & DESCRIPTION) */
+        .tracklist-wrapper, .article-description-wrapper {
             font-size: 0.75rem;
             max-width: 340px;
             width: 100%;
             text-align: right;
+        }
+
+        .article-description-wrapper p {
+            font-size: 0.75rem;
+            margin: 0 0 10px 0;
+            color: #555;
         }
 
         .tracklist-header {
@@ -202,7 +208,7 @@
             display: block;
             margin-top: 10px;
             font-size: 0.75rem;
-            color: #888;
+            font-weight: bold; /* Bold action links */
             text-align: right;
         }
         .post-audio-link a, .right-action-link a {
@@ -226,7 +232,7 @@
                 align-items: flex-start;
                 gap: 15px;
             }
-            .tracklist-wrapper, .article-link-wrapper, .left-content {
+            .tracklist-wrapper, .article-description-wrapper, .left-content {
                 text-align: left;
                 max-width: 100%;
             }
@@ -241,10 +247,9 @@
 
 <div class="container">
     <header>
-        <h1>yidiyidiyidi</h1>
+        <h1>yidi</h1>
         
         <div class="contact-info">
-            <a href="mailto:yidi.zheng@duke.edu">yidi.zheng@duke.edu</a><br>
             <a href="https://instagram.com/yidiyidiyidi" target="_blank">@yidiyidiyidi</a>
         </div>
     </header>
@@ -370,14 +375,14 @@
                 <span class="project-meta">Durham/Guangzhou, Jan 2026</span>
             </div>
             <div class="article-section">
-                <div class="media-container left-content">
+                <!-- Left side left intentionally blank/clean or for future icon/trigger -->
+                <div class="left-content"></div>
+                
+                <!-- Description moved to the right side to structurally match tracklists -->
+                <div class="article-description-wrapper">
                     <p>
                         Published in <i>Critical Asian Studies</i> commentary board, as part of the special series <i>New Directions in Africa-China Studies</i>. This article invites a critique of the techno-optimism surrounding the Chinese-designed Afro-inclusive facial recognition technologies.
                     </p>
-                </div>
-                
-                <!-- Right-Aligned Article link container matched to site style framework -->
-                <div class="article-link-wrapper">
                     <div class="right-action-link">
                         <a href="https://criticalasianstudies.org/commentary/2026/1/22/special-series-new-directions-in-africa-china-studies-yidi-zhengnbspcapturing-the-face-afro-inclusive-machine-visions-from-south-china" target="_blank">
                             Read Full Article →
