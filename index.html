@@ -193,22 +193,18 @@
         }
 
         /* RIGHT-ALIGNED ACTION LINKS WITH MATCHED STYLING */
-        .post-audio-link, .right-action-link {
+        .right-action-link {
             display: block;
             margin-top: 10px;
             font-size: 0.75rem;
             font-weight: bold;
             text-align: right;
         }
-        .post-audio-link a {
-            color: #888;
-            text-decoration: underline;
-        }
         .right-action-link a {
             color: #888;
             text-decoration: none;
         }
-        .post-audio-link a:hover, .right-action-link a:hover {
+        .right-action-link a:hover {
             color: #000;
         }
 
@@ -253,7 +249,7 @@
             .article-description-wrapper {
                 max-width: 100%;
             }
-            .post-audio-link, .right-action-link {
+            .right-action-link {
                 margin-top: 5px;
             }
         }
@@ -279,10 +275,48 @@
             </div>
             
             <div class="audio-section">
-                <div class="left-content"></div>
+                <div class="media-container left-content">
+                    <!-- Native Button Trigger -->
+                    <button class="audio-control-btn" id="nts-toggle">
+                        <span class="icon">▶</span> <span class="text">PLAY MIX</span>
+                    </button>
 
-                <!-- Right-Aligned Action & Link Module -->
+                    <!-- Hidden SoundCloud iframe -->
+                    <iframe class="sc-hidden-player" id="nts-player" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2326040987&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                </div>
+
+                <!-- Right-Aligned Tracklist & Action Link Module -->
                 <div class="tracklist-wrapper">
+                    <div class="tracklist-header">TRACKLIST</div>
+                    <ul class="tracklist" id="nts-tracklist">
+                        <li class="track-item"><span class="track-title">Böklänešlär (Unreleased)</span><span class="track-artist">CBGE</span></li>
+                        <li class="track-item"><span class="track-title">Praying For Rain</span><span class="track-artist">Prieste5s</span></li>
+                        <li class="track-item"><span class="track-title">Bubble (Shai FM Remix)</span><span class="track-artist">HomeSick Sim</span></li>
+                        <li class="track-item"><span class="track-title">Nervous System</span><span class="track-artist">Ambu Bambu</span></li>
+                        <li class="track-item"><span class="track-title">Ruins</span><span class="track-artist">Om Unit, Djrum</span></li>
+                        <li class="track-item"><span class="track-title">Dali</span><span class="track-artist">Muadeep</span></li>
+                        <li class="track-item"><span class="track-title">Flux Entrance</span><span class="track-artist">Jensen Interceptor</span></li>
+                        <li class="track-item"><span class="track-title">One Sentinal</span><span class="track-artist">Muadeep</span></li>
+                        <li class="track-item"><span class="track-title">I Can Tell That You're Trying</span><span class="track-artist">Nora Drum</span></li>
+                        <li class="track-item"><span class="track-title">God Is Shaking</span><span class="track-artist">Smogo</span></li>
+                        <li class="track-item"><span class="track-title">Drumlure</span><span class="track-artist">RAVL, Aloka</span></li>
+                        <li class="track-item"><span class="track-title">Rolling With Fabio</span><span class="track-artist">Mantra</span></li>
+                        <li class="track-item"><span class="track-title">Lost In Da Jungle</span><span class="track-artist">DJ Manny</span></li>
+                        <li class="track-item"><span class="track-title">Voices Of Depossession</span><span class="track-artist">Vardae</span></li>
+                        <li class="track-item"><span class="track-title">Charming Your Soul</span><span class="track-artist">Vardae</span></li>
+                        <li class="track-item"><span class="track-title">Granulate</span><span class="track-artist">Aloka</span></li>
+                        <li class="track-item"><span class="track-title">Vector Space</span><span class="track-artist">Aloka</span></li>
+                        <li class="track-item"><span class="track-title">Drillaman (Jensen Interceptor's Appointment With Dr. Blofeld Mix)</span><span class="track-artist">Obeka</span></li>
+                        <li class="track-item"><span class="track-title">Repercussion</span><span class="track-artist">Calyx</span></li>
+                        <li class="track-item"><span class="track-title">Kylli Ma</span><span class="track-artist">Muadeep</span></li>
+                        <li class="track-item"><span class="track-title">Kill Da DJ</span><span class="track-artist">Traxman</span></li>
+                    </ul>
+
+                    <div class="right-action-link">
+                        <a href="https://soundcloud.com/user-202286394-991268468/rooftop-variety-shop-mix-w?utm_medium=api&utm_campaign=social_sharing&utm_source=id_314736" target="_blank">
+                            Listen on SoundCloud →
+                        </a>
+                    </div>
                     <div class="right-action-link">
                         <a href="https://www.nts.live/shows/dancing-2026/episodes/dancing-2026-rooftop-variety-shop-mix-w-yidiyidiyidi-21st-september-2026" target="_blank">
                             Listen on NTS Radio →
@@ -340,8 +374,10 @@
                         <li class="track-item" data-time="2700"><span class="track-title">BLAAS FLUIT</span><span class="track-artist">Ziggy Twiss</span></li>
                     </ul>
                     
-                    <div class="post-audio-link">
-                        <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">Listen on SoundCloud</a>
+                    <div class="right-action-link">
+                        <a href="https://soundcloud.com/moth-radio/global-bass-baile-funk-grime" target="_blank">
+                            Listen on SoundCloud →
+                        </a>
                     </div>
                 </div>
             </div>
@@ -398,8 +434,10 @@
                         <li class="track-item"><span class="track-title">Three O'Clock</span><span class="track-artist">DJ Hesss Young Lychee</span></li>
                     </ul>
                     
-                    <div class="post-audio-link">
-                        <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">Listen on SoundCloud</a>
+                    <div class="right-action-link">
+                        <a href="https://soundcloud.com/byyb_radio/yidiyidiyidi-byyb-radio-mar-14" target="_blank">
+                            Listen on SoundCloud →
+                        </a>
                     </div>
                 </div>
             </div>
@@ -435,6 +473,27 @@
 <script src="https://w.soundcloud.com/player/api.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // --- NTS RADIO PLAYER ---
+        var ntsIframe = document.getElementById('nts-player');
+        var ntsWidget = SC.Widget(ntsIframe);
+        var ntsToggle = document.getElementById('nts-toggle');
+        var ntsIcon = ntsToggle.querySelector('.icon');
+        var ntsText = ntsToggle.querySelector('.text');
+
+        ntsToggle.addEventListener('click', function() {
+            ntsWidget.toggle();
+        });
+
+        ntsWidget.bind(SC.Widget.Events.PLAY, function() {
+            ntsIcon.innerText = "■";
+            ntsText.innerText = "PAUSE MIX";
+        });
+
+        ntsWidget.bind(SC.Widget.Events.PAUSE, function() {
+            ntsIcon.innerText = "▶";
+            ntsText.innerText = "PLAY MIX";
+        });
+
         // --- MOTH RADIO PLAYER ---
         var mothIframe = document.getElementById('moth-player');
         var mothWidget = SC.Widget(mothIframe);
